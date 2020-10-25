@@ -15,4 +15,8 @@ io.on("connection", function(socket){
     io.sockets.emit("chat", data); //send to all the clients
   });
   //now listen for the event in front end (data sent by the server)
+  //after that listen for the typing message
+  socket.on("typing", function(data){
+    socket.broadcast.emit("typing", data);
+  });
 });
